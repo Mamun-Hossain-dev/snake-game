@@ -6,13 +6,20 @@ const foodSound = new Audio("./assets/food.mp3");
 const moveSound = new Audio("./assets/move.mp3");
 const gameOverSound = new Audio("./assets/over.wav");
 
+//level buttons variables
+const btnsContainer = document.querySelectorAll(".level-btns button");
+const buttons = Array.from(btnsContainer);
+
+// //initially active the easy level 
+buttons[0].classList.add("selected");
+
 // snake variables
 let inputDir = {x: 0, y: 0};
 let snakeArr = [
     {x: 5, y: 9}
 ];
 let food = {x: 12, y: 15};
-let speed = 8;
+let speed = 4;
 let lastPaintTime = 0;
 let score = 0;
 let point = 0;
@@ -30,6 +37,28 @@ function main(ctime) {
 
   //call the gameEngine() function
   gameEngine();
+}
+
+//reset the active class
+function resetActiveClass() {
+    buttons.forEach((btn)=> btn.classList.remove('selected'));
+}
+
+// if you level up the game then increase the speed 
+buttons[0].onclick = function() {
+    speed = 4;
+    resetActiveClass();
+    this. classList.add("selected");
+}
+buttons[1].onclick = function() {
+    speed = 8;
+    resetActiveClass();
+    this. classList.add("selected");
+}
+buttons[2].onclick = function() {
+    speed = 12;
+    resetActiveClass();
+    this. classList.add("selected");
 }
 
 // function collide () 

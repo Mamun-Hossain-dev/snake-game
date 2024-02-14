@@ -82,3 +82,50 @@
     border: 1px solid rgb(0, 140, 65);
     border-radius: 50%;
 }
+
+
+.level-btns {
+    position: absolute;
+    top: 40%;
+    left: 5%;
+    width: 15vw;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 30px 30px 40px;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(90, 157, 90) , rgb(157, 157, 100));
+    border-radius: 6px;
+}
+
+.level-btns h2 {
+    color: rgb(252, 255, 252);
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+.selected {
+    color: #fff !important;
+    background: #881003b3 !important;  
+}
+
+.level-btns button {
+    width: 70%;
+    border:none;
+    outline: none;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    transition: all 0.6s;
+    background: linear-gradient(rgba(50, 74, 50, 0.657), rgb(64, 64, 39));
+}
+
+.level-btns button:hover {
+    cursor: pointer;
+    background: rgba(14, 119, 48, 0.584);
+}
+
+
+
