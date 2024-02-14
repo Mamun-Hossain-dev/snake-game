@@ -10,8 +10,12 @@ const gameOverSound = new Audio("./assets/over.wav");
 const btnsContainer = document.querySelectorAll(".level-btns button");
 const buttons = Array.from(btnsContainer);
 
-// //initially active the easy level 
+// level highScores variables
+let highScoreVal = 0;
+
+// //initially active the easy level and get the high score value
 buttons[0].classList.add("selected");
+getHighScore("EasyHighScore");
 
 // snake variables
 let inputDir = {x: 0, y: 0};
@@ -23,7 +27,6 @@ let speed = 4;
 let lastPaintTime = 0;
 let score = 0;
 let point = 0;
-let highScoreVal = 0;
 
 
 // main function or gaming loop function
@@ -49,16 +52,19 @@ buttons[0].onclick = function() {
     speed = 4;
     resetActiveClass();
     this. classList.add("selected");
+    getHighScore("EasyHighScore");
 }
 buttons[1].onclick = function() {
     speed = 8;
     resetActiveClass();
     this. classList.add("selected");
+    getHighScore("mediumHighScore");
 }
-buttons[2].onclick = function() {
+buttons[2].onclick = function() { 
     speed = 12;
     resetActiveClass();
     this. classList.add("selected");
+    getHighScore("hardHighScore");
 }
 
 // function collide () 
@@ -104,11 +110,34 @@ function gameEngine() {
     if (snakeArr[0].x === food.x && snakeArr[0].y === food.y) {
         foodSound.play();
         score++;
-        if (score > highScoreVal) {
-            highScoreVal = score;
-            highScoreBox.innerHTML = highScoreVal;
-            localStorage.setItem("highScore", JSON.stringify(highScoreVal));
+
+        // changing the highScore according the levels
+
+        // for easy levels
+        if (buttons[0].classList.contains("selected")) {
+            if (score > highScoreVal) {
+                highScoreVal = score;
+                setHighScore("EasyHighScore", highScoreVal);
+                getHighScore("EasyHighScore");
+            }
         }
+        // for medium levels
+        if (buttons[1].classList.contains("selected")) {
+            if (score > highScoreVal) {
+                highScoreVal = score;
+                setHighScore("mediumHighScore", highScoreVal);
+                getHighScore("mediumHighScore");
+            }
+        }
+        // for hard levels
+        if (buttons[2].classList.contains("selected")) {
+            if (score > highScoreVal) {
+                highScoreVal = score;
+                setHighScore("hardHighScore", highScoreVal);
+                getHighScore("hardHighScore");
+            }
+        }
+
         point += 10;
         scoreBox.innerHTML = (score < 10) ? `0${score}`: score; 
         pointsBox.innerHTML = (point < 100) ? `000${point}`: point; 
@@ -145,14 +174,23 @@ function gameEngine() {
 }
 
 // getting highScore value from the LS:
-let highScore = localStorage.getItem("highScore");
-if (highScore === null) {
-    highScoreVal = 0
-    localStorage.setItem("highScore", JSON.stringify(highScoreVal));
-} else {
-    highScoreVal = JSON.parse(highScore);
+function getHighScore (LevelScore) {
+    let highScore = localStorage.getItem(LevelScore);
+    
+    if (highScore === null) {
+        highScoreVal = 0
+        localStorage.setItem(LevelScore, JSON.stringify(highScoreVal));
+    } else {
+        highScoreVal = JSON.parse(highScore);
+    }
     highScoreBox.innerHTML = highScoreVal;
 }
+
+// setting New HighScore in LS
+function setHighScore (levelType, levelHScore) {
+    localStorage.setItem(levelType, JSON.stringify(levelHScore));
+}
+
 
 // initialize the game  
 window.requestAnimationFrame(main);
