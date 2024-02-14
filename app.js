@@ -77,7 +77,7 @@ function isCollide(arr) {
     }
 
     //checking collision with walls and edges
-    if (arr[0].x >= 20 || arr[0].y >= 20 || arr[0].x <= 0 || arr[0].y <= 0) {
+    if (arr[0].x >= 25 || arr[0].y >= 25 || arr[0].x <= 0 || arr[0].y <= 0) {
         return true;
     }
 }
@@ -85,7 +85,7 @@ function isCollide(arr) {
 //generate random foods after eating 
 function generateFood() {
     let min = 2;
-    let max = 18;
+    let max = 23;
     food.x = Math.floor(Math.random() * (max - min + 1)) + min;
     food.y = Math.floor(Math.random() * (max - min + 1)) + min;
 }
