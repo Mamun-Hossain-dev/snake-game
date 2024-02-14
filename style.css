@@ -60,8 +60,8 @@
     background: linear-gradient(rgb(147, 240, 147), rgb(176, 232, 117));
     border: 5px solid rgb(104, 132, 59);
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    grid-template-rows: repeat(20, 1fr);
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: repeat(25, 1fr);
 }
 
 .snake-head {
