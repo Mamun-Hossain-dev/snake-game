@@ -23,7 +23,7 @@ let snakeArr = [
     {x: 5, y: 9}
 ];
 let food = {x: 12, y: 15};
-let speed = 4;
+let speed = 6;
 let lastPaintTime = 0;
 let score = 0;
 let point = 0;
@@ -49,19 +49,19 @@ function resetActiveClass() {
 
 // if you level up the game then increase the speed 
 buttons[0].onclick = function() {
-    speed = 4;
+    speed = 6;
     resetActiveClass();
     this. classList.add("selected");
     getHighScore("EasyHighScore");
 }
 buttons[1].onclick = function() {
-    speed = 8;
+    speed = 10;
     resetActiveClass();
     this. classList.add("selected");
     getHighScore("mediumHighScore");
 }
 buttons[2].onclick = function() { 
-    speed = 12;
+    speed = 14;
     resetActiveClass();
     this. classList.add("selected");
     getHighScore("hardHighScore");
