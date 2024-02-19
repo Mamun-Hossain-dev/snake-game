@@ -94,7 +94,7 @@ function generateFood() {
 //  Game Engine Function
 function gameEngine() {
     snakeBoard.innerHTML = "";
-
+    
     // update the snake and the food
     if(isCollide(snakeArr)) {
         gameOverSound.play();
@@ -221,3 +221,4 @@ window.addEventListener("keydown", (e) => {
             break;
     }
 })
+
